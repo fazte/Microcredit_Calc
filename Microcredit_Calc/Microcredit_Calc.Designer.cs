@@ -44,13 +44,14 @@ namespace Microcredit_Calc
             this.butPriceGo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvGrafik = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.percRate = new System.Windows.Forms.NumericUpDown();
             this.Columns1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Columns2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Columns3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Columns4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.percRate = new System.Windows.Forms.NumericUpDown();
+            this.btClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sumCredit)).BeginInit();
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.creditTerm)).BeginInit();
@@ -73,7 +74,7 @@ namespace Microcredit_Calc
             // 
             this.sumCredit.Location = new System.Drawing.Point(173, 30);
             this.sumCredit.Maximum = new decimal(new int[] {
-            100000,
+            3000000,
             0,
             0,
             0});
@@ -90,6 +91,7 @@ namespace Microcredit_Calc
             0,
             0,
             0});
+            this.sumCredit.ValueChanged += new System.EventHandler(this.sumCredit_ValueChanged);
             // 
             // label3
             // 
@@ -151,9 +153,11 @@ namespace Microcredit_Calc
             this.butSaveAsCSV.TabIndex = 9;
             this.butSaveAsCSV.Text = "экспорт рассчетов";
             this.butSaveAsCSV.UseVisualStyleBackColor = true;
+            this.butSaveAsCSV.Click += new System.EventHandler(this.butSaveAsCSV_Click);
             // 
             // percentSum
             // 
+            this.percentSum.BackColor = System.Drawing.SystemColors.Window;
             this.percentSum.Location = new System.Drawing.Point(147, 103);
             this.percentSum.Name = "percentSum";
             this.percentSum.ReadOnly = true;
@@ -162,6 +166,7 @@ namespace Microcredit_Calc
             // 
             // effectivRate
             // 
+            this.effectivRate.BackColor = System.Drawing.SystemColors.Window;
             this.effectivRate.Location = new System.Drawing.Point(147, 59);
             this.effectivRate.Name = "effectivRate";
             this.effectivRate.ReadOnly = true;
@@ -170,6 +175,7 @@ namespace Microcredit_Calc
             // 
             // allSum
             // 
+            this.allSum.BackColor = System.Drawing.SystemColors.Window;
             this.allSum.Location = new System.Drawing.Point(147, 13);
             this.allSum.Name = "allSum";
             this.allSum.ReadOnly = true;
@@ -197,6 +203,7 @@ namespace Microcredit_Calc
             0,
             0,
             0});
+            this.creditTerm.ValueChanged += new System.EventHandler(this.creditTerm_ValueChanged);
             // 
             // butPriceGo
             // 
@@ -213,13 +220,16 @@ namespace Microcredit_Calc
             this.groupBox1.Controls.Add(this.dgvGrafik);
             this.groupBox1.Location = new System.Drawing.Point(12, 225);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(455, 244);
+            this.groupBox1.Size = new System.Drawing.Size(646, 319);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "График платежей";
             // 
             // dgvGrafik
             // 
+            this.dgvGrafik.AllowUserToDeleteRows = false;
+            this.dgvGrafik.AllowUserToResizeColumns = false;
+            this.dgvGrafik.AllowUserToResizeRows = false;
             this.dgvGrafik.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrafik.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Columns1,
@@ -228,29 +238,10 @@ namespace Microcredit_Calc
             this.Columns4});
             this.dgvGrafik.Location = new System.Drawing.Point(6, 16);
             this.dgvGrafik.Name = "dgvGrafik";
-            this.dgvGrafik.Size = new System.Drawing.Size(446, 222);
+            this.dgvGrafik.ReadOnly = true;
+            this.dgvGrafik.Size = new System.Drawing.Size(635, 302);
             this.dgvGrafik.TabIndex = 0;
             this.dgvGrafik.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGrafik_CellContentClick);
-            // 
-            // Columns1
-            // 
-            this.Columns1.HeaderText = "День";
-            this.Columns1.Name = "Columns1";
-            // 
-            // Columns2
-            // 
-            this.Columns2.HeaderText = "Ставка";
-            this.Columns2.Name = "Columns2";
-            // 
-            // Columns3
-            // 
-            this.Columns3.HeaderText = "Накопительно";
-            this.Columns3.Name = "Columns3";
-            // 
-            // Columns4
-            // 
-            this.Columns4.HeaderText = "Сумма выплат";
-            this.Columns4.Name = "Columns4";
             // 
             // label7
             // 
@@ -279,7 +270,7 @@ namespace Microcredit_Calc
             65536});
             this.percRate.Location = new System.Drawing.Point(172, 113);
             this.percRate.Maximum = new decimal(new int[] {
-            20,
+            50,
             0,
             0,
             0});
@@ -299,9 +290,43 @@ namespace Microcredit_Calc
             0});
             this.percRate.ValueChanged += new System.EventHandler(this.percRate_ValueChanged);
             // 
+            // Columns1
+            // 
+            this.Columns1.HeaderText = "День";
+            this.Columns1.Name = "Columns1";
+            // 
+            // Columns2
+            // 
+            this.Columns2.HeaderText = "Ставка (%)";
+            this.Columns2.Name = "Columns2";
+            this.Columns2.Width = 150;
+            // 
+            // Columns3
+            // 
+            this.Columns3.HeaderText = "Накопительно (Руб)";
+            this.Columns3.Name = "Columns3";
+            this.Columns3.Width = 150;
+            // 
+            // Columns4
+            // 
+            this.Columns4.HeaderText = "Сумма выплат (Руб)";
+            this.Columns4.Name = "Columns4";
+            this.Columns4.Width = 200;
+            // 
+            // btClear
+            // 
+            this.btClear.Location = new System.Drawing.Point(309, 157);
+            this.btClear.Name = "btClear";
+            this.btClear.Size = new System.Drawing.Size(75, 23);
+            this.btClear.TabIndex = 13;
+            this.btClear.Text = "Очистить";
+            this.btClear.UseVisualStyleBackColor = true;
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
+            // 
             // Microcredit_Calc
             // 
-            this.ClientSize = new System.Drawing.Size(812, 626);
+            this.ClientSize = new System.Drawing.Size(815, 636);
+            this.Controls.Add(this.btClear);
             this.Controls.Add(this.percRate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -312,6 +337,7 @@ namespace Microcredit_Calc
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sumCredit);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Microcredit_Calc";
             this.Text = "Microcredit_Calc";
             ((System.ComponentModel.ISupportInitialize)(this.sumCredit)).EndInit();
@@ -344,14 +370,15 @@ namespace Microcredit_Calc
         private System.Windows.Forms.Button butPriceGo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvGrafik;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Columns1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Columns2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Columns3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Columns4;
         private System.Windows.Forms.Button butSaveAsCSV;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown percRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns4;
+        private System.Windows.Forms.Button btClear;
     }
 }
 
