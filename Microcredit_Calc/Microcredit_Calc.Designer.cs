@@ -36,9 +36,10 @@ namespace Microcredit_Calc
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Result = new System.Windows.Forms.GroupBox();
-            this.allSum = new System.Windows.Forms.TextBox();
-            this.effectivRate = new System.Windows.Forms.TextBox();
+            this.butSaveAsCSV = new System.Windows.Forms.Button();
             this.percentSum = new System.Windows.Forms.TextBox();
+            this.effectivRate = new System.Windows.Forms.TextBox();
+            this.allSum = new System.Windows.Forms.TextBox();
             this.creditTerm = new System.Windows.Forms.NumericUpDown();
             this.butPriceGo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,7 +48,6 @@ namespace Microcredit_Calc
             this.Columns2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Columns3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Columns4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.butSaveAsCSV = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.percRate = new System.Windows.Forms.NumericUpDown();
@@ -143,12 +143,21 @@ namespace Microcredit_Calc
             this.Result.TabStop = false;
             this.Result.Text = "Результат";
             // 
-            // allSum
+            // butSaveAsCSV
             // 
-            this.allSum.Location = new System.Drawing.Point(147, 13);
-            this.allSum.Name = "allSum";
-            this.allSum.Size = new System.Drawing.Size(120, 20);
-            this.allSum.TabIndex = 6;
+            this.butSaveAsCSV.Location = new System.Drawing.Point(77, 145);
+            this.butSaveAsCSV.Name = "butSaveAsCSV";
+            this.butSaveAsCSV.Size = new System.Drawing.Size(145, 23);
+            this.butSaveAsCSV.TabIndex = 9;
+            this.butSaveAsCSV.Text = "экспорт рассчетов";
+            this.butSaveAsCSV.UseVisualStyleBackColor = true;
+            // 
+            // percentSum
+            // 
+            this.percentSum.Location = new System.Drawing.Point(147, 103);
+            this.percentSum.Name = "percentSum";
+            this.percentSum.Size = new System.Drawing.Size(120, 20);
+            this.percentSum.TabIndex = 8;
             // 
             // effectivRate
             // 
@@ -157,12 +166,12 @@ namespace Microcredit_Calc
             this.effectivRate.Size = new System.Drawing.Size(120, 20);
             this.effectivRate.TabIndex = 7;
             // 
-            // percentSum
+            // allSum
             // 
-            this.percentSum.Location = new System.Drawing.Point(147, 103);
-            this.percentSum.Name = "percentSum";
-            this.percentSum.Size = new System.Drawing.Size(120, 20);
-            this.percentSum.TabIndex = 8;
+            this.allSum.Location = new System.Drawing.Point(147, 13);
+            this.allSum.Name = "allSum";
+            this.allSum.Size = new System.Drawing.Size(120, 20);
+            this.allSum.TabIndex = 6;
             // 
             // creditTerm
             // 
@@ -194,6 +203,7 @@ namespace Microcredit_Calc
             this.butPriceGo.TabIndex = 8;
             this.butPriceGo.Text = "Рассчитать";
             this.butPriceGo.UseVisualStyleBackColor = true;
+            this.butPriceGo.Click += new System.EventHandler(this.butPriceGo_Click);
             // 
             // groupBox1
             // 
@@ -238,15 +248,6 @@ namespace Microcredit_Calc
             // 
             this.Columns4.HeaderText = "Сумма выплат";
             this.Columns4.Name = "Columns4";
-            // 
-            // butSaveAsCSV
-            // 
-            this.butSaveAsCSV.Location = new System.Drawing.Point(77, 145);
-            this.butSaveAsCSV.Name = "butSaveAsCSV";
-            this.butSaveAsCSV.Size = new System.Drawing.Size(145, 23);
-            this.butSaveAsCSV.TabIndex = 9;
-            this.butSaveAsCSV.Text = "экспорт рассчетов";
-            this.butSaveAsCSV.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
