@@ -49,11 +49,14 @@ namespace Microcredit_Calc
             this.Columns4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.butSaveAsCSV = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.percRate = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.sumCredit)).BeginInit();
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.creditTerm)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.percRate)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -68,7 +71,7 @@ namespace Microcredit_Calc
             // 
             // sumCredit
             // 
-            this.sumCredit.Location = new System.Drawing.Point(156, 30);
+            this.sumCredit.Location = new System.Drawing.Point(173, 30);
             this.sumCredit.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -91,7 +94,7 @@ namespace Microcredit_Calc
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 95);
+            this.label3.Location = new System.Drawing.Point(36, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 2;
@@ -163,7 +166,7 @@ namespace Microcredit_Calc
             // 
             // creditTerm
             // 
-            this.creditTerm.Location = new System.Drawing.Point(156, 93);
+            this.creditTerm.Location = new System.Drawing.Point(172, 69);
             this.creditTerm.Maximum = new decimal(new int[] {
             365,
             0,
@@ -185,7 +188,7 @@ namespace Microcredit_Calc
             // 
             // butPriceGo
             // 
-            this.butPriceGo.Location = new System.Drawing.Point(39, 157);
+            this.butPriceGo.Location = new System.Drawing.Point(115, 158);
             this.butPriceGo.Name = "butPriceGo";
             this.butPriceGo.Size = new System.Drawing.Size(167, 22);
             this.butPriceGo.TabIndex = 8;
@@ -195,7 +198,7 @@ namespace Microcredit_Calc
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvGrafik);
-            this.groupBox1.Location = new System.Drawing.Point(-3, 217);
+            this.groupBox1.Location = new System.Drawing.Point(12, 225);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(455, 244);
             this.groupBox1.TabIndex = 9;
@@ -210,10 +213,11 @@ namespace Microcredit_Calc
             this.Columns2,
             this.Columns3,
             this.Columns4});
-            this.dgvGrafik.Location = new System.Drawing.Point(6, 19);
+            this.dgvGrafik.Location = new System.Drawing.Point(6, 16);
             this.dgvGrafik.Name = "dgvGrafik";
             this.dgvGrafik.Size = new System.Drawing.Size(446, 222);
             this.dgvGrafik.TabIndex = 0;
+            this.dgvGrafik.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGrafik_CellContentClick);
             // 
             // Columns1
             // 
@@ -252,9 +256,50 @@ namespace Microcredit_Calc
             this.label7.Size = new System.Drawing.Size(0, 13);
             this.label7.TabIndex = 10;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(36, 115);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(123, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Процентная ставка (%)";
+            // 
+            // percRate
+            // 
+            this.percRate.DecimalPlaces = 2;
+            this.percRate.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.percRate.Location = new System.Drawing.Point(172, 113);
+            this.percRate.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.percRate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.percRate.Name = "percRate";
+            this.percRate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.percRate.Size = new System.Drawing.Size(120, 20);
+            this.percRate.TabIndex = 12;
+            this.percRate.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.percRate.ValueChanged += new System.EventHandler(this.percRate_ValueChanged);
+            // 
             // Microcredit_Calc
             // 
             this.ClientSize = new System.Drawing.Size(812, 626);
+            this.Controls.Add(this.percRate);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.butPriceGo);
@@ -271,6 +316,7 @@ namespace Microcredit_Calc
             ((System.ComponentModel.ISupportInitialize)(this.creditTerm)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.percRate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +346,8 @@ namespace Microcredit_Calc
         private System.Windows.Forms.DataGridViewTextBoxColumn Columns4;
         private System.Windows.Forms.Button butSaveAsCSV;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown percRate;
     }
 }
 

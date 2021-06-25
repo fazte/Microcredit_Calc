@@ -17,5 +17,13 @@ namespace Microcredit_Calc
             InitializeComponent();
         }
 
+        private void percRate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvGrafik_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
     }
 }
