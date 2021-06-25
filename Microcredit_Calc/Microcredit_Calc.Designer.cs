@@ -156,6 +156,7 @@ namespace Microcredit_Calc
             // 
             this.percentSum.Location = new System.Drawing.Point(147, 103);
             this.percentSum.Name = "percentSum";
+            this.percentSum.ReadOnly = true;
             this.percentSum.Size = new System.Drawing.Size(120, 20);
             this.percentSum.TabIndex = 8;
             // 
@@ -163,6 +164,7 @@ namespace Microcredit_Calc
             // 
             this.effectivRate.Location = new System.Drawing.Point(147, 59);
             this.effectivRate.Name = "effectivRate";
+            this.effectivRate.ReadOnly = true;
             this.effectivRate.Size = new System.Drawing.Size(120, 20);
             this.effectivRate.TabIndex = 7;
             // 
@@ -170,6 +172,7 @@ namespace Microcredit_Calc
             // 
             this.allSum.Location = new System.Drawing.Point(147, 13);
             this.allSum.Name = "allSum";
+            this.allSum.ReadOnly = true;
             this.allSum.Size = new System.Drawing.Size(120, 20);
             this.allSum.TabIndex = 6;
             // 
