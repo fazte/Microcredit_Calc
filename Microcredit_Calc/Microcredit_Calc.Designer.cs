@@ -52,6 +52,8 @@ namespace Microcredit_Calc
             this.Columns3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Columns4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btClear = new System.Windows.Forms.Button();
+            this.btLoad = new System.Windows.Forms.Button();
+            this.btPrecent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sumCredit)).BeginInit();
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.creditTerm)).BeginInit();
@@ -186,7 +188,7 @@ namespace Microcredit_Calc
             // 
             this.creditTerm.Location = new System.Drawing.Point(172, 69);
             this.creditTerm.Maximum = new decimal(new int[] {
-            365,
+            500,
             0,
             0,
             0});
@@ -268,7 +270,7 @@ namespace Microcredit_Calc
             0,
             0,
             65536});
-            this.percRate.Location = new System.Drawing.Point(172, 113);
+            this.percRate.Location = new System.Drawing.Point(172, 111);
             this.percRate.Maximum = new decimal(new int[] {
             50,
             0,
@@ -294,23 +296,27 @@ namespace Microcredit_Calc
             // 
             this.Columns1.HeaderText = "День";
             this.Columns1.Name = "Columns1";
+            this.Columns1.ReadOnly = true;
             // 
             // Columns2
             // 
             this.Columns2.HeaderText = "Ставка (%)";
             this.Columns2.Name = "Columns2";
+            this.Columns2.ReadOnly = true;
             this.Columns2.Width = 150;
             // 
             // Columns3
             // 
             this.Columns3.HeaderText = "Накопительно (Руб)";
             this.Columns3.Name = "Columns3";
+            this.Columns3.ReadOnly = true;
             this.Columns3.Width = 150;
             // 
             // Columns4
             // 
             this.Columns4.HeaderText = "Сумма выплат (Руб)";
             this.Columns4.Name = "Columns4";
+            this.Columns4.ReadOnly = true;
             this.Columns4.Width = 200;
             // 
             // btClear
@@ -323,9 +329,31 @@ namespace Microcredit_Calc
             this.btClear.UseVisualStyleBackColor = true;
             this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
+            // btLoad
+            // 
+            this.btLoad.Location = new System.Drawing.Point(309, 66);
+            this.btLoad.Name = "btLoad";
+            this.btLoad.Size = new System.Drawing.Size(103, 23);
+            this.btLoad.TabIndex = 14;
+            this.btLoad.Text = "загрузить дни";
+            this.btLoad.UseVisualStyleBackColor = true;
+            this.btLoad.Click += new System.EventHandler(this.btLoad_Click);
+            // 
+            // btPrecent
+            // 
+            this.btPrecent.Location = new System.Drawing.Point(309, 113);
+            this.btPrecent.Name = "btPrecent";
+            this.btPrecent.Size = new System.Drawing.Size(122, 23);
+            this.btPrecent.TabIndex = 15;
+            this.btPrecent.Text = "загрузить проценты";
+            this.btPrecent.UseVisualStyleBackColor = true;
+            this.btPrecent.Click += new System.EventHandler(this.btPrecent_Click);
+            // 
             // Microcredit_Calc
             // 
             this.ClientSize = new System.Drawing.Size(815, 636);
+            this.Controls.Add(this.btPrecent);
+            this.Controls.Add(this.btLoad);
             this.Controls.Add(this.btClear);
             this.Controls.Add(this.percRate);
             this.Controls.Add(this.label8);
@@ -379,6 +407,8 @@ namespace Microcredit_Calc
         private System.Windows.Forms.DataGridViewTextBoxColumn Columns3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Columns4;
         private System.Windows.Forms.Button btClear;
+        private System.Windows.Forms.Button btLoad;
+        private System.Windows.Forms.Button btPrecent;
     }
 }
 

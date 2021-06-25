@@ -19,7 +19,20 @@ namespace Microcredit_Calc
         }
 
         private void percRate_ValueChanged(object sender, EventArgs e)
-        {}
+        {
+            try
+            {
+                if (percRate.Value >= 50 || sumCredit.Value <= 0)
+                {
+                    MessageBox.Show("Нельзя запрашивать в долг больше 300000 или меньше 1000");
+                    throw new ArgumentNullException();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Подставьте правильные значения");
+            }
+        }
 
         private void dgvGrafik_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {}
@@ -130,6 +143,26 @@ namespace Microcredit_Calc
             catch
             {
                 MessageBox.Show("Подставьте правильные значения");
+            }
+        }
+
+        private void btLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openTableAsCSV = new OpenFileDialog();
+            openTableAsCSV.Filter = "Документ TXT (*.txt) |*.txt";
+            if (openTableAsCSV.ShowDialog() == DialogResult.OK)
+            {
+                creditTerm.Text = File.ReadAllText(openTableAsCSV.FileName, Encoding.Default);
+            }
+        }
+
+        private void btPrecent_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openTableAsCSV = new OpenFileDialog();
+            openTableAsCSV.Filter = "Документ TXT (*.txt) |*.txt";
+            if (openTableAsCSV.ShowDialog() == DialogResult.OK)
+            {
+                percRate.Text = File.ReadAllText(openTableAsCSV.FileName, Encoding.Default);
             }
         }
     }
