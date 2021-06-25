@@ -41,15 +41,25 @@ namespace Microcredit_Calc
             this.percentSum = new System.Windows.Forms.TextBox();
             this.creditTerm = new System.Windows.Forms.NumericUpDown();
             this.butPriceGo = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvGrafik = new System.Windows.Forms.DataGridView();
+            this.Columns1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columns2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columns3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columns4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.butSaveAsCSV = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sumCredit)).BeginInit();
             this.Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.creditTerm)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 33);
+            this.label2.Location = new System.Drawing.Point(36, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 0;
@@ -58,7 +68,7 @@ namespace Microcredit_Calc
             // 
             // sumCredit
             // 
-            this.sumCredit.Location = new System.Drawing.Point(129, 31);
+            this.sumCredit.Location = new System.Drawing.Point(156, 30);
             this.sumCredit.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -81,11 +91,11 @@ namespace Microcredit_Calc
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 94);
+            this.label3.Location = new System.Drawing.Point(36, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Срок займа";
+            this.label3.Text = "Срок займа (Дней)";
             // 
             // label4
             // 
@@ -116,6 +126,7 @@ namespace Microcredit_Calc
             // 
             // Result
             // 
+            this.Result.Controls.Add(this.butSaveAsCSV);
             this.Result.Controls.Add(this.percentSum);
             this.Result.Controls.Add(this.effectivRate);
             this.Result.Controls.Add(this.allSum);
@@ -124,7 +135,7 @@ namespace Microcredit_Calc
             this.Result.Controls.Add(this.label6);
             this.Result.Location = new System.Drawing.Point(493, 12);
             this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(318, 140);
+            this.Result.Size = new System.Drawing.Size(318, 183);
             this.Result.TabIndex = 6;
             this.Result.TabStop = false;
             this.Result.Text = "Результат";
@@ -152,7 +163,7 @@ namespace Microcredit_Calc
             // 
             // creditTerm
             // 
-            this.creditTerm.Location = new System.Drawing.Point(129, 94);
+            this.creditTerm.Location = new System.Drawing.Point(156, 93);
             this.creditTerm.Maximum = new decimal(new int[] {
             365,
             0,
@@ -174,16 +185,78 @@ namespace Microcredit_Calc
             // 
             // butPriceGo
             // 
-            this.butPriceGo.Location = new System.Drawing.Point(308, 193);
+            this.butPriceGo.Location = new System.Drawing.Point(39, 157);
             this.butPriceGo.Name = "butPriceGo";
             this.butPriceGo.Size = new System.Drawing.Size(167, 22);
             this.butPriceGo.TabIndex = 8;
             this.butPriceGo.Text = "Рассчитать";
             this.butPriceGo.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvGrafik);
+            this.groupBox1.Location = new System.Drawing.Point(-3, 217);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(455, 244);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "График платежей";
+            // 
+            // dgvGrafik
+            // 
+            this.dgvGrafik.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGrafik.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Columns1,
+            this.Columns2,
+            this.Columns3,
+            this.Columns4});
+            this.dgvGrafik.Location = new System.Drawing.Point(6, 19);
+            this.dgvGrafik.Name = "dgvGrafik";
+            this.dgvGrafik.Size = new System.Drawing.Size(446, 222);
+            this.dgvGrafik.TabIndex = 0;
+            // 
+            // Columns1
+            // 
+            this.Columns1.HeaderText = "День";
+            this.Columns1.Name = "Columns1";
+            // 
+            // Columns2
+            // 
+            this.Columns2.HeaderText = "Ставка";
+            this.Columns2.Name = "Columns2";
+            // 
+            // Columns3
+            // 
+            this.Columns3.HeaderText = "Накопительно";
+            this.Columns3.Name = "Columns3";
+            // 
+            // Columns4
+            // 
+            this.Columns4.HeaderText = "Сумма выплат";
+            this.Columns4.Name = "Columns4";
+            // 
+            // butSaveAsCSV
+            // 
+            this.butSaveAsCSV.Location = new System.Drawing.Point(77, 145);
+            this.butSaveAsCSV.Name = "butSaveAsCSV";
+            this.butSaveAsCSV.Size = new System.Drawing.Size(145, 23);
+            this.butSaveAsCSV.TabIndex = 9;
+            this.butSaveAsCSV.Text = "экспорт рассчетов";
+            this.butSaveAsCSV.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(282, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 13);
+            this.label7.TabIndex = 10;
+            // 
             // Microcredit_Calc
             // 
-            this.ClientSize = new System.Drawing.Size(823, 400);
+            this.ClientSize = new System.Drawing.Size(812, 626);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.butPriceGo);
             this.Controls.Add(this.creditTerm);
             this.Controls.Add(this.Result);
@@ -196,6 +269,8 @@ namespace Microcredit_Calc
             this.Result.ResumeLayout(false);
             this.Result.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.creditTerm)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGrafik)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,6 +292,14 @@ namespace Microcredit_Calc
         private System.Windows.Forms.TextBox allSum;
         private System.Windows.Forms.NumericUpDown creditTerm;
         private System.Windows.Forms.Button butPriceGo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgvGrafik;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columns4;
+        private System.Windows.Forms.Button butSaveAsCSV;
+        private System.Windows.Forms.Label label7;
     }
 }
 
